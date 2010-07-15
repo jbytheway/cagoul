@@ -1,0 +1,8 @@
+Cagoul
+======
+
+Cagoul is a thin C++ wrapper of OpenGL, to provide additional typesafety and
+facilitate RAII programming.
+
+Copyright (C) 2010
+John Bytheway <jbytheway at that gmail place>
