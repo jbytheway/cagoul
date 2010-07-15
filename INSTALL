@@ -1,0 +1,20 @@
+This project uses makeshift to build.  If the makeshift directory is empty then
+you probably need to run
+
+$ git submodule init
+$ git submodule update
+
+Then to get a debug version it should be simply
+
+$ make
+
+and you can run the tests with
+
+$ make test
+
+If it all works you can build the release version with
+
+$ make release
+
+This will build inside a directory called release.
+
