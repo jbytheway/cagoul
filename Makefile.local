@@ -1,2 +1,6 @@
-SUBDIRS :=
+SUBDIRS := cagoul examples
+
+all-recurse-examples: all-recurse-cagoul
+
+test-recurse-examples: test-recurse-cagoul
 

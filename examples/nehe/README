@@ -1,0 +1,14 @@
+The examples herein are derived from those on http://nehe.gamedev.net/
+
+The 'raw' directory contains versions close to the Linux versions available on
+the site, with minor alterations to remove compiler warnings or normalize
+formatting.
+
+The 'cagoul' directory contains versions which have been ported to cagoul.
+
+Thus, these examples demonstrate how to translate common OpenGL constructs into
+cagoul.
+
+The examples use GLUT as a windowing library.  Cagoul does not wrap GLUT, so
+those portions are preserved.
+

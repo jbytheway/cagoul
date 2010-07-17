@@ -1,0 +1,5 @@
+# This file is used as the Makefile.local for each subdirectory of this one
+
+BIN := $(basename $(wildcard *.c))
+LIBS := -lglut -lGLU -lGL
+
