@@ -1,0 +1,6 @@
+# This file is used as the Makefile.local for each subdirectory of this one
+
+BIN := $(basename $(wildcard *.cpp))
+LIB_DEP_NAMES := cagoul
+LIBS := -lglut -lGLU
+
