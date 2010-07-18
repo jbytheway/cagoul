@@ -1,0 +1,22 @@
+BIN := libcagoul.la
+
+all-nonrecursive: all.hpp.stamp
+
+CAGOUL_HEADERS := \
+	$(filter-out all.hpp,$(notdir $(wildcard $(this_srcdir)*.hpp)))
+
+# We want to depend all.hpp on the source directory to ensure it's
+# regenerated when headers are deleted.  The downside of this is that it
+# would be regenerated far too often.  Thus we use a stamp file instead, and
+# only overwrite all.hpp when it's actually changed.  This should minimize the
+# extent to which other code #including all.hpp gets recompiled.
+all.hpp.stamp: $(this_srcdir)
+	printf "#include <cagoul/%s>\n" $(CAGOUL_HEADERS) > all.hpp.tmp
+	if diff all.hpp all.hpp.tmp; \
+	then \
+		rm all.hpp.tmp; \
+	else \
+		mv all.hpp.tmp all.hpp; \
+	fi
+	touch $@
+
