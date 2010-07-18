@@ -1,6 +1,8 @@
 #ifndef CAGOUL_ENUMS__VALUES_TYPE_HPP
 #define CAGOUL_ENUMS__VALUES_TYPE_HPP
 
+#include <boost/utility/enable_if.hpp>
+
 #include <cagoul/detail/braces_if_doxygen.hpp>
 
 namespace cagoul { namespace enums {

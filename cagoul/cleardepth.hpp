@@ -1,6 +1,8 @@
 #ifndef CAGOUL__CLEARDEPTH_HPP
 #define CAGOUL__CLEARDEPTH_HPP
 
+#include <cagoul/getter_setter.hpp>
+
 namespace cagoul {
 
 static const getter_setter<

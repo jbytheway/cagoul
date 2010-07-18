@@ -3,8 +3,12 @@
 #ifndef CAGOUL__SETTER_HPP
 #define CAGOUL__SETTER_HPP
 
+#include <boost/preprocessor/iterate.hpp>
+#include <boost/preprocessor/enum_params.hpp>
+
 #include <cagoul/detail/homogenous_function.hpp>
 #include <cagoul/detail/braces_if_doxygen.hpp>
+#include <cagoul/detail/decay_scoped_enum.hpp>
 
 namespace cagoul {
 
