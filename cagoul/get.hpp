@@ -3,6 +3,13 @@
 
 namespace cagoul {
 
+//@{
+/** \brief Overloaded glGet wrapper.
+ *
+ * The Get functions are simple wrappers round the various versions of glGet
+ * using overloading on parameter types to distinguish them, rather than the
+ * function name.
+ */
 inline void Get(GLenum const pname, GLboolean* const params) {
   glGetBooleanv(pname, params);
 }
@@ -18,6 +25,7 @@ inline void Get(GLenum const pname, GLfloat* const params) {
 inline void Get(GLenum const pname, GLint* const params) {
   glGetIntegerv(pname, params);
 }
+//@}
 
 }
 

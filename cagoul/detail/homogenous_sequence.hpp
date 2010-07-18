@@ -8,10 +8,13 @@
 
 namespace cagoul { namespace detail {
 
-template<typename T, arity_type Arity>
+/** \internal \brief Metafunction returning an MPL sequence of \c Size copies
+ * of \c T */
+template<typename T, arity_type Size>
 struct homogenous_sequence {
+  /** \internal */
   typedef typename boost::mpl::transform<
-    boost::mpl::range_c<arity_type, 0, Arity>,
+    boost::mpl::range_c<arity_type, 0, Size>,
     boost::mpl::always<T>,
     boost::mpl::back_inserter<boost::mpl::vector0<> >
   >::type type;

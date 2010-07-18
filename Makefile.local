@@ -4,3 +4,8 @@ all-recurse-examples: all-recurse-cagoul
 
 test-recurse-examples: test-recurse-cagoul
 
+.PHONY: doc
+doc:
+	# Redirect because doxygen doesn't flush stdout properly
+	doxygen >/dev/null
+

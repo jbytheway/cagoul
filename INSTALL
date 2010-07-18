@@ -18,3 +18,9 @@ $ make release
 
 This will build inside a directory called release.
 
+To build the documentation (which will require doxygen and dot) run
+
+$ make doc
+
+at the top level.  This will build HTML docs in doc/html.
+
