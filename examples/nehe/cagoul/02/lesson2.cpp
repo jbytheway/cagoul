@@ -34,7 +34,9 @@ void InitGL(int Width, int Height)
   );
   cagoul::ClearDepth(1.0);      // Enables Clearing Of The Depth Buffer
   assert(cagoul::ClearDepth() == 1.0);
-  glDepthFunc(GL_LESS);         // The Type Of Depth Test To Do
+  glDepthFunc(cagoul::DepthFunc.LESS); // The Type Of Depth Test To Do
+  assert(cagoul::DepthFunc() == cagoul::DepthFunc.LESS);
+  assert(cagoul::DepthFunc.LESS == cagoul::enums::DepthFunc::LESS);
   glEnable(GL_DEPTH_TEST);      // Enables Depth Testing
   glShadeModel(GL_SMOOTH);      // Enables Smooth Color Shading
 

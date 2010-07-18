@@ -4,6 +4,7 @@
 #define CAGOUL__SETTER_HPP
 
 #include <cagoul/detail/homogenous_function.hpp>
+#include <cagoul/detail/braces_if_doxygen.hpp>
 
 namespace cagoul {
 
@@ -20,13 +21,11 @@ namespace cagoul {
 template<
   typename T,
   arity_type Arity,
-  typename detail::homogenous_function<T, Arity>::type* Setter
+  typename detail::homogenous_function<
+    typename detail::decay_scoped_enum<T>::type, Arity
+  >::type* Setter
 >
-class setter
-#ifdef DOXYGEN
-{}
-#endif
-;
+class setter CAGOUL_DETAIL_BRACES_IF_DOXYGEN;
 
 #ifndef DOXYGEN
 #define BOOST_PP_ITERATION_PARAMS_1 \
