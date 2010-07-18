@@ -32,7 +32,8 @@ void InitGL(int Width, int Height)
   assert(
     cagoul::ClearColor() == boost::fusion::make_vector(0.0f, 0.0f, 0.0f, 0.0f)
   );
-  glClearDepth(1.0);            // Enables Clearing Of The Depth Buffer
+  cagoul::ClearDepth(1.0);      // Enables Clearing Of The Depth Buffer
+  assert(cagoul::ClearDepth() == 1.0);
   glDepthFunc(GL_LESS);         // The Type Of Depth Test To Do
   glEnable(GL_DEPTH_TEST);      // Enables Depth Testing
   glShadeModel(GL_SMOOTH);      // Enables Smooth Color Shading
