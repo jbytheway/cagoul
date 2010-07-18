@@ -6,6 +6,8 @@
 #include <boost/mpl/always.hpp>
 #include <boost/mpl/vector.hpp>
 
+#include <cagoul/arity_type.hpp>
+
 namespace cagoul { namespace detail {
 
 /** \internal \brief Metafunction returning an MPL sequence of \c Size copies

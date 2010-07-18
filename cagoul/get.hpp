@@ -1,6 +1,13 @@
 #ifndef CAGOUL__GET_HPP
 #define CAGOUL__GET_HPP
 
+#include <boost/mpl/assert.hpp>
+#include <boost/utility/enable_if.hpp>
+
+#include <GL/gl.h>
+
+#include <cagoul/enums/is_scoped_enum.hpp>
+
 namespace cagoul {
 
 //@{

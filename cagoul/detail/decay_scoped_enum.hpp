@@ -1,6 +1,8 @@
 #ifndef CAGOUL_DETAIL__DECAY_SCOPED_ENUM_HPP
 #define CAGOUL_DETAIL__DECAY_SCOPED_ENUM_HPP
 
+#include <GL/gl.h>
+
 #include <cagoul/enums/is_scoped_enum.hpp>
 
 namespace cagoul { namespace detail {

@@ -2,6 +2,7 @@
 #define CAGOUL__DEPTHFUNC_HPP
 
 #include <cagoul/enums/depthfunc.hpp>
+#include <cagoul/getter_setter.hpp>
 
 namespace cagoul {
 

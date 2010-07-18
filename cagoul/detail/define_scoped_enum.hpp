@@ -3,7 +3,9 @@
 
 #include <boost/preprocessor/seq/for_each.hpp>
 
-namespace cagoul { namespace detail {
+#include <GL/gl.h>
+
+#include <cagoul/enums/is_scoped_enum.hpp>
 
 #define CAGOUL_DETAIL_DEFINE_SCOPED_ENUM_VALUE(r, d, value) \
   value = BOOST_PP_CAT(GL_,value),
@@ -30,8 +32,6 @@ namespace cagoul { namespace detail {
   template<>                                           \
   struct is_scoped_enum<name> : boost::mpl::true_      \
   {};
-
-}}
 
 #endif // CAGOUL_DETAIL__DEFINE_SCOPED_ENUM_HPP
 
