@@ -1,6 +1,11 @@
 #ifndef CAGOUL__GETTER_SETTER_HPP
 #define CAGOUL__GETTER_SETTER_HPP
 
+#include <boost/mpl/if.hpp>
+
+#include <cagoul/detail/decay_scoped_enum.hpp>
+#include <cagoul/detail/empty.hpp>
+#include <cagoul/enums/values_type.hpp>
 #include <cagoul/getter.hpp>
 #include <cagoul/setter.hpp>
 
@@ -48,16 +53,31 @@ namespace cagoul {
  * instances are stateless, so having them as global variables should pose no
  * concurrency issues; indeed they should be entirely optimized away in release
  * builds.
+ *
+ * When T is a Cagoul scoped enum (defined in cagoul::enums) some additional
+ * features are evidenced.  The conversions back and forth between GLenum and
+ * T are handled internally so as not to expose the unsafe GLenum type.  Also,
+ * getter_setter inherits from T::values so that the enumeration values are in
+ * scope and can be accessed as <tt>f.foo</tt> where \c f is an instance of
+ * getter_setter and \c foo is an enumeration value.
  */
 template<
   typename T,
   arity_type Arity,
-  typename detail::homogenous_function<T, Arity>::type* Setter,
-  GLenum SymbolicConstant
+  typename detail::homogenous_function<
+    typename detail::decay_scoped_enum<T>::type, Arity
+  >::type* Setter,
+  GLenum SymbolicConstant,
+  typename Base = typename boost::mpl::if_<
+    enums::is_scoped_enum<T>,
+    typename enums::values_type<T>::type,
+    detail::empty
+  >::type
 >
 class getter_setter :
   public getter<T, Arity, SymbolicConstant>,
-  public setter<T, Arity, Setter>
+  public setter<T, Arity, Setter>,
+  public Base
 {
   public:
     // Non-default default constructor so that we can const instances

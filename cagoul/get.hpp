@@ -25,6 +25,21 @@ inline void Get(GLenum const pname, GLfloat* const params) {
 inline void Get(GLenum const pname, GLint* const params) {
   glGetIntegerv(pname, params);
 }
+
+/** \brief Fetch enumeration value using glGet.
+ *
+ * This overload is used when you call Get with a pointer to a scoped enum (as
+ * defined in cagoul::enums).  It forwards to the integer overload.
+ */
+template<typename T>
+inline typename boost::enable_if<enums::is_scoped_enum<T> >::type
+Get(GLenum const pname, T* const params) {
+  // Verify that the representations are binary compatible so we can
+  // reinterpret_cast
+  BOOST_MPL_ASSERT_RELATION(sizeof(T),==,sizeof(GLint));
+  BOOST_MPL_ASSERT_RELATION(sizeof(typename T::internal_enum),==,sizeof(T));
+  Get(pname, reinterpret_cast<GLint*>(params));
+}
 //@}
 
 }
