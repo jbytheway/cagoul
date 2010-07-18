@@ -1,0 +1,11 @@
+/** \page overloadedwrappers Overloaded wrappers
+Where a GL function has several different names purely to allow different
+argument types the Cagoul wrapper may eliminate some or all of the suffix added
+to the function name, using C++ function overloading to dispatch to the various
+GL functions.  There shall not be multiple overloads which might be reached by
+implicit conversions.
+
+For example, the four glGet functions glGetBooleanv, glGetDoublev,
+glGetFloatv, and glGetIntegerv are wrapped by the collection of overloaded
+functions cagoul::Get.
+*/

@@ -1,0 +1,6 @@
+/** \namespace cagoul
+The cagoul namespace contains the public interface of Cagoul.  Implementation
+details are in the cagoul::detail namespace and defined in headers in the
+cagoul/detail directory; you should not need to include detail headers nor use
+names from the detail namespace.
+*/

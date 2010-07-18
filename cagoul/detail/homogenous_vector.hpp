@@ -8,10 +8,14 @@
 
 namespace cagoul { namespace detail {
 
-template<typename T, arity_type Arity>
+/** \internal \brief Metafunction returning a \c boost::fusion::vector of \c
+ * Size copies of \c T.
+ */
+template<typename T, arity_type Size>
 struct homogenous_vector {
+  /** \internal */
   typedef typename boost::fusion::result_of::as_vector<
-    typename homogenous_sequence<T, Arity>::type
+    typename homogenous_sequence<T, Size>::type
   >::type type;
 };
 

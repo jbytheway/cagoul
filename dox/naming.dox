@@ -1,0 +1,10 @@
+/** \page naming Naming
+Where a Cagoul concept has a direct equivalent in GL, then the same name is
+used, retaining the GL CamelCase, but removing any \c gl or \c GL prefix.  For
+example, cagoul::Get is a wrapper for glGet, and cagoul::ClearColor for
+glClearColor.
+
+Where there is no direct GL equivalent, the C++
+\c underscore_separated_lower_case naming convention is used. for example,
+cagoul::getter_setter is a class used to support other Cagoul functionality.
+*/

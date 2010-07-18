@@ -1,0 +1,10 @@
+/** \mainpage
+Cagoul is a C++ wrapper around OpenGL.  It provides a thin wrapper around the
+OpenGL functions to increase type-safety and otherwise simplify programming
+with little or (more often) no runtime overhead.
+
+Use the links above to find specific classes or functions.  The following pages
+describe some more general Cagoul issues.
+\li \ref naming
+\li \ref overloadedwrappers
+*/
