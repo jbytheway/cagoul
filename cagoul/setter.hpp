@@ -1,3 +1,5 @@
+#if !defined(BOOST_PP_IS_ITERATING) || !BOOST_PP_IS_ITERATING
+
 #ifndef CAGOUL__SETTER_HPP
 #define CAGOUL__SETTER_HPP
 
@@ -25,19 +27,28 @@ class setter
 ;
 
 #ifndef DOXYGEN
-template<
-  typename T,
-  typename detail::homogenous_function<T, 4>::type* Setter
->
-class setter<T, 4, Setter> {
-  public:
-    void operator()(T const t0, T const t1, T const t2, T const t3) const {
-      Setter(t0, t1, t2, t3);
-    }
-};
+#define BOOST_PP_ITERATION_PARAMS_1 \
+  (3, (1, 4, "cagoul/setter.hpp"))
+#include BOOST_PP_ITERATE()
 #endif // DOXYGEN
 
 }
 
 #endif // CAGOUL__SETTER_HPP
+
+#else // Here we are iterating
+
+template<
+  typename T,
+  typename detail::homogenous_function<T, BOOST_PP_ITERATION()>::type* Setter
+>
+class setter<T, BOOST_PP_ITERATION(), Setter> {
+  public:
+    void
+    operator()(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), T const t)) const {
+      Setter(BOOST_PP_ENUM_PARAMS(BOOST_PP_ITERATION(), t));
+    }
+};
+
+#endif // Iteration
 
