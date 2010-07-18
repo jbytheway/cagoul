@@ -14,6 +14,8 @@ namespace cagoul {
  * type \c T, and returning void.  This functionality in itself is not very
  * useful, but it is used in getter_setter to bring together access and
  * assignment to a GL value in one place.
+ *
+ * setter is only instantiated for Arity from 1 to 4.
  */
 template<
   typename T,
