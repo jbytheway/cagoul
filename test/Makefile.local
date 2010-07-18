@@ -1,0 +1,20 @@
+CAGOUL_PUBLIC_HEADERS := $(notdir $(wildcard $(top_srcdir)cagoul/*.hpp))
+INCLUDE_TESTS := \
+	$(addsuffix .include.cpp,$(basename $(CAGOUL_PUBLIC_HEADERS)))
+STRAY_INCLUDE_TESTS := \
+	$(filter-out $(INCLUDE_TESTS),$(wildcard *.include.cpp))
+
+BIN := cagoul-test
+LIBS := -lboost_unit_test_framework-mt
+GEN_SOURCES := $(INCLUDE_TESTS)
+EXCLUDE_FILES := $(STRAY_INCLUDE_TESTS)
+
+$(INCLUDE_TESTS): %.include.cpp:
+	printf '#include <cagoul/%s.hpp>' '$*' > $@
+
+test-nonrecursive: $(BIN)
+	./$<
+
+clean:
+	rm -f *.include.cpp
+

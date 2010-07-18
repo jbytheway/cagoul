@@ -1,8 +1,8 @@
-SUBDIRS := cagoul examples
+SUBDIRS := cagoul test examples
 
-all-recurse-examples: all-recurse-cagoul
+all-recurse-examples all-recurse-test: all-recurse-cagoul
 
-test-recurse-examples: test-recurse-cagoul
+test-recurse-examples test-recurse-test: test-recurse-cagoul
 
 .PHONY: doc
 doc:
