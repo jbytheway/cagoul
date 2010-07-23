@@ -3,7 +3,10 @@ BIN := libcagoul.la
 all-nonrecursive: all.hpp.stamp
 
 CAGOUL_HEADERS := \
-	$(filter-out all.hpp,$(notdir $(wildcard $(this_srcdir)*.hpp)))
+	$(filter-out all.hpp,$(patsubst $(this_srcdir)%,%, \
+		$(wildcard $(this_srcdir)*.hpp) \
+		$(wildcard $(this_srcdir)enums/*.hpp) \
+	))
 
 # We want to depend all.hpp on the source directory to ensure it's
 # regenerated when headers are deleted.  The downside of this is that it
