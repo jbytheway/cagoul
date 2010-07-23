@@ -32,15 +32,21 @@ void InitGL(int Width, int Height)
   assert(
     cagoul::ClearColor() == boost::fusion::make_vector(0.0f, 0.0f, 0.0f, 0.0f)
   );
+
   cagoul::ClearDepth(1.0);      // Enables Clearing Of The Depth Buffer
   assert(cagoul::ClearDepth() == 1.0);
+
   cagoul::DepthFunc(cagoul::DepthFunc.LESS); // The Type Of Depth Test To Do
   assert(cagoul::DepthFunc() == cagoul::DepthFunc.LESS);
   assert(cagoul::DepthFunc.LESS == cagoul::enums::DepthFunc::LESS);
+
   assert(!cagoul::DepthFunc.IsEnabled());
   cagoul::DepthFunc.Enable();   // Enables Depth Testing
   assert(cagoul::DepthFunc.IsEnabled());
-  glShadeModel(GL_SMOOTH);      // Enables Smooth Color Shading
+
+  // Enables Smooth Color Shading
+  cagoul::ShadeModel(cagoul::ShadeModel.SMOOTH);
+  assert(cagoul::ShadeModel() == cagoul::ShadeModel.SMOOTH);
 
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();             // Reset The Projection Matrix
