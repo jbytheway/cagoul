@@ -1,4 +1,4 @@
-/** \page naming Naming
+/** \page naming Naming and headers
 Where a Cagoul concept has a direct equivalent in GL, then the same name is
 used, retaining the GL CamelCase, but removing any \c gl or \c GL prefix.  For
 example, cagoul::Get is a wrapper for glGet, and cagoul::ClearColor for
@@ -7,4 +7,14 @@ glClearColor.
 Where there is no direct GL equivalent, the C++
 \c underscore_separated_lower_case naming convention is used. for example,
 cagoul::getter_setter is a class used to support other Cagoul functionality.
+
+The declaration of any cagoul variable, type, or function can be used by
+including an appropriate header.  The directory structure of the headers
+matches the namespace structure of the code, and the name of the header will be
+the name of the variable or function, converted to lower case.  For example,
+cagoul::arity_type is in <tt>cagoul/arity_type.hpp</tt>,
+cagoul::enums::DepthFunc is in <tt>cagoul/enums/depthfunc.hpp</tt> and the
+various overloads of cagoul::Get are in <tt>cagoul/get.hpp</tt>.
+
+The special header <tt>cagoul/all.hpp</tt> will include all the cagoul headers.
 */
