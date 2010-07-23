@@ -4,6 +4,7 @@
 #include <boost/utility/enable_if.hpp>
 
 #include <cagoul/detail/braces_if_doxygen.hpp>
+#include <cagoul/enums/is_scoped_enum.hpp>
 
 namespace cagoul { namespace enums {
 
