@@ -15,6 +15,8 @@ namespace cagoul { namespace enums {
   (GEQUAL)   \
   (ALWAYS)
 
+/** \brief Scoped enumeration of potential glDepthFunc / cagoul::DepthFunc
+ * arguments. */
 CAGOUL_DETAIL_DEFINE_SCOPED_ENUM(DepthFunc, CAGOUL_ENUMS_DEPTHFUNC_VALUES)
 
 }}
