@@ -1,4 +1,8 @@
-CAGOUL_PUBLIC_HEADERS := $(notdir $(wildcard $(top_srcdir)cagoul/*.hpp))
+CAGOUL_PUBLIC_HEADERS := \
+	$(patsubst $(top_srcdir)cagoul/%,%, \
+		$(wildcard $(top_srcdir)cagoul/*.hpp) \
+		$(wildcard $(top_srcdir)cagoul/enums/*.hpp) \
+	)
 INCLUDE_TESTS := \
 	$(addsuffix .include.cpp,$(basename $(CAGOUL_PUBLIC_HEADERS)))
 STRAY_INCLUDE_TESTS := \
@@ -10,11 +14,12 @@ GEN_SOURCES := $(INCLUDE_TESTS)
 EXCLUDE_FILES := $(STRAY_INCLUDE_TESTS)
 
 $(INCLUDE_TESTS): %.include.cpp:
-	printf '#include <cagoul/%s.hpp>' '$*' > $@
+	mkdir -p $(dir $@)
+	printf '#include <cagoul/%s.hpp>\n' '$*' > $@
 
 test-nonrecursive: $(BIN)
 	./$<
 
 clean:
-	rm -f *.include.cpp
+	rm -rf *.include.cpp enums
 
