@@ -3,11 +3,11 @@
 
 #include <GL/gl.h>
 
-#include <cagoul/getter_setter.hpp>
+#include <cagoul/getter_setter_toggler.hpp>
 
 namespace cagoul {
 
-static const getter_setter<
+static const getter_setter_toggler<
   GLfloat, 4,
   &glClearColor,
   GL_COLOR_CLEAR_VALUE

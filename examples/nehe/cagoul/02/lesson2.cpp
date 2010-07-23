@@ -37,7 +37,9 @@ void InitGL(int Width, int Height)
   cagoul::DepthFunc(cagoul::DepthFunc.LESS); // The Type Of Depth Test To Do
   assert(cagoul::DepthFunc() == cagoul::DepthFunc.LESS);
   assert(cagoul::DepthFunc.LESS == cagoul::enums::DepthFunc::LESS);
-  glEnable(GL_DEPTH_TEST);      // Enables Depth Testing
+  assert(!cagoul::DepthFunc.IsEnabled());
+  cagoul::DepthFunc.Enable();   // Enables Depth Testing
+  assert(cagoul::DepthFunc.IsEnabled());
   glShadeModel(GL_SMOOTH);      // Enables Smooth Color Shading
 
   glMatrixMode(GL_PROJECTION);
