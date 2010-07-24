@@ -13,6 +13,7 @@
 #include <unistd.h>             // Header File For sleeping.
 #include <GL/glut.h>            // Header File For The GLUT Library
 #include <GL/glu.h>             // Header File For The GLu32 Library
+#include <boost/bind.hpp>
 #include <boost/fusion/include/make_vector.hpp>
 #include <boost/fusion/include/equal_to.hpp>
 #include <cagoul/all.hpp>
@@ -86,21 +87,21 @@ void DrawGLScene()
   glTranslatef(-1.5f, 0.0f, -6.0f);
 
   // draw a triangle
-  glBegin(GL_POLYGON);          // start drawing a polygon
-  glVertex3f(0.0f, 1.0f, 0.0f); // Top
-  glVertex3f(1.0f, -1.0f, 0.0f);        // Bottom Right
-  glVertex3f(-1.0f, -1.0f, 0.0f);       // Bottom Left
-  glEnd();                      // we're done with the polygon
+  cagoul::Begin(cagoul::Begin::POLYGON)
+    .call(boost::bind(glVertex3f, 0.0f, 1.0f, 0.0f))    // Top
+    .call(boost::bind(glVertex3f, 1.0f, -1.0f, 0.0f))   // Bottom Right
+    .call(boost::bind(glVertex3f, -1.0f, -1.0f, 0.0f))  // Bottom Left
+    ;
 
   glTranslatef(3.0f, 0.0f, 0.0f);       // Move Right 3 Units
 
   // draw a square (quadrilateral)
-  glBegin(GL_QUADS);            // start drawing a polygon (4 sided)
-  glVertex3f(-1.0f, 1.0f, 0.0f);        // Top Left
-  glVertex3f(1.0f, 1.0f, 0.0f); // Top Right
-  glVertex3f(1.0f, -1.0f, 0.0f);        // Bottom Right
-  glVertex3f(-1.0f, -1.0f, 0.0f);       // Bottom Left
-  glEnd();                      // done with the polygon
+  cagoul::Begin(cagoul::Begin::QUADS)
+    .Vertexf(-1.0f, 1.0f, 0.0f)   // Top Left
+    .Vertexf(1.0f, 1.0f, 0.0f)    // Top Right
+    .Vertexf(1.0f, -1.0f, 0.0f)   // Bottom Right
+    .Vertexf(-1.0f, -1.0f, 0.0f)  // Bottom Left
+    ;                           // done with the polygon
 
   // swap buffers to display, since we're double buffered.
   glutSwapBuffers();
