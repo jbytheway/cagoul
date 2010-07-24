@@ -76,7 +76,10 @@ void ReSizeGLScene(int Width, int Height)
 void DrawGLScene()
 {
   // Clear The Screen And The Depth Buffer
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  cagoul::Clear(
+    cagoul::Clear.COLOR_BUFFER_BIT | cagoul::Clear.DEPTH_BUFFER_BIT
+  );
+
   glLoadIdentity();             // Reset The View
 
   // Move Left 1.5 Units And Into The Screen 6.0
