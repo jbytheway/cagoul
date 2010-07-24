@@ -22,10 +22,13 @@
   class name : public name##_values {                  \
     public:                                            \
       typedef name##_values values;                    \
+      static name from_GLenum(GLenum const v) { return name(v); } \
       name() {}                                        \
       name(internal_enum const v) : value_(v) {}       \
       operator internal_enum() const { return value_; } \
+      GLenum to_GLenum() const { return value_; }      \
     private:                                           \
+      explicit name(GLenum const v) : value_(internal_enum(v)) {} \
       internal_enum value_;                            \
   };                                                   \
                                                        \
