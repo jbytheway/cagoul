@@ -1,7 +1,8 @@
+HEADER_DIRS := enums scoped
 CAGOUL_PUBLIC_HEADERS := \
 	$(patsubst $(top_srcdir)cagoul/%,%, \
 		$(wildcard $(top_srcdir)cagoul/*.hpp) \
-		$(wildcard $(top_srcdir)cagoul/enums/*.hpp) \
+		$(foreach d,$(HEADER_DIRS),$(wildcard $(top_srcdir)cagoul/$(d)/*.hpp)) \
 	)
 INCLUDE_TESTS := \
 	$(addsuffix .include.cpp,$(basename $(CAGOUL_PUBLIC_HEADERS)))
@@ -21,5 +22,5 @@ test-nonrecursive: $(BIN)
 	./$<
 
 clean:
-	rm -rf *.include.cpp enums
+	rm -rf *.include.cpp $(HEADER_DIRS)
 

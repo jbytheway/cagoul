@@ -1,11 +1,12 @@
 BIN := libcagoul.la
+SOURCE_DIRS := enums scoped
 
 all-nonrecursive: all.hpp.stamp
 
 CAGOUL_HEADERS := \
 	$(filter-out all.hpp,$(patsubst $(this_srcdir)%,%, \
 		$(wildcard $(this_srcdir)*.hpp) \
-		$(wildcard $(this_srcdir)enums/*.hpp) \
+		$(foreach d,$(SOURCE_DIRS),$(wildcard $(this_srcdir)$(d)/*.hpp)) \
 	))
 
 # We want to depend all.hpp on the source directory to ensure it's
