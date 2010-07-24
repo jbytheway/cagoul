@@ -66,7 +66,7 @@ void ReSizeGLScene(int Width, int Height)
   // Reset The Current Viewport And Perspective Transformation
   glViewport(0, 0, Width, Height);
 
-  cagoul::scoped::MatrixMode(cagoul::MatrixMode.PROJECTION);
+  cagoul::scoped::MatrixMode scope(cagoul::MatrixMode.PROJECTION);
   glLoadIdentity();
 
   gluPerspective(45.0f, (GLfloat) Width / (GLfloat) Height, 0.1f, 100.0f);
