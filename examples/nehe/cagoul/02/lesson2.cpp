@@ -48,12 +48,11 @@ void InitGL(int Width, int Height)
   cagoul::ShadeModel(cagoul::ShadeModel.SMOOTH);
   assert(cagoul::ShadeModel() == cagoul::ShadeModel.SMOOTH);
 
-  glMatrixMode(GL_PROJECTION);
+  cagoul::scoped::MatrixMode scope(cagoul::MatrixMode.PROJECTION);
   glLoadIdentity();             // Reset The Projection Matrix
 
-  gluPerspective(45.0f, (GLfloat) Width / (GLfloat) Height, 0.1f, 100.0f);      // Calculate The Aspect Ratio Of The Window
-
-  glMatrixMode(GL_MODELVIEW);
+  // Calculate The Aspect Ratio Of The Window
+  gluPerspective(45.0f, (GLfloat) Width / (GLfloat) Height, 0.1f, 100.0f);
 }
 
 /* The function called when our window is resized (which shouldn't happen, because we're fullscreen) */
