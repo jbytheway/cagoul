@@ -55,28 +55,32 @@ void InitGL(int Width, int Height)
   gluPerspective(45.0f, (GLfloat) Width / (GLfloat) Height, 0.1f, 100.0f);
 }
 
-/* The function called when our window is resized (which shouldn't happen, because we're fullscreen) */
+/* The function called when our window is resized (which shouldn't happen,
+ * because we're fullscreen) */
 void ReSizeGLScene(int Width, int Height)
 {
-  if (Height == 0)              // Prevent A Divide By Zero If The Window Is Too Small
+  // Prevent A Divide By Zero If The Window Is Too Small
+  if (Height == 0)
     Height = 1;
 
-  glViewport(0, 0, Width, Height);      // Reset The Current Viewport And Perspective Transformation
+  // Reset The Current Viewport And Perspective Transformation
+  glViewport(0, 0, Width, Height);
 
-  glMatrixMode(GL_PROJECTION);
+  cagoul::scoped::MatrixMode(cagoul::MatrixMode.PROJECTION);
   glLoadIdentity();
 
   gluPerspective(45.0f, (GLfloat) Width / (GLfloat) Height, 0.1f, 100.0f);
-  glMatrixMode(GL_MODELVIEW);
 }
 
 /* The main drawing function. */
 void DrawGLScene()
 {
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);   // Clear The Screen And The Depth Buffer
+  // Clear The Screen And The Depth Buffer
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glLoadIdentity();             // Reset The View
 
-  glTranslatef(-1.5f, 0.0f, -6.0f);     // Move Left 1.5 Units And Into The Screen 6.0
+  // Move Left 1.5 Units And Into The Screen 6.0
+  glTranslatef(-1.5f, 0.0f, -6.0f);
 
   // draw a triangle
   glBegin(GL_POLYGON);          // start drawing a polygon
@@ -117,8 +121,9 @@ void keyPressed(unsigned char key, int, int)
 
 int main(int argc, char **argv)
 {
-  /* Initialize GLUT state - glut will take any command line arguments that pertain to it or
-     X Windows - look at its documentation at http://reality.sgi.com/mjk/spec3/spec3.html */
+  /* Initialize GLUT state - glut will take any command line arguments that
+   * pertain to it or X Windows - look at its documentation at
+   * http://reality.sgi.com/mjk/spec3/spec3.html */
   glutInit(&argc, argv);
 
   /* Select type of Display mode:
