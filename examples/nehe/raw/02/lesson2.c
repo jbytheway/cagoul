@@ -120,9 +120,6 @@ int main(int argc, char **argv)
   /* Register the function to do all our OpenGL drawing. */
   glutDisplayFunc(&DrawGLScene);
 
-  /* Go fullscreen.  This is the soonest we could possibly go fullscreen. */
-  glutFullScreen();
-
   /* Even if there are no events, redraw our gl scene. */
   glutIdleFunc(&DrawGLScene);
 
