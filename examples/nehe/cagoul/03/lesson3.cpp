@@ -1,6 +1,7 @@
 //
 // This code was created by Jeff Molofee '99
 // (ported to Linux/GLUT by Richard Campbell '99)
+// (and again to cagoul by John Bytheway 2010)
 //
 // If you've found this code useful, please let me know.
 //
@@ -10,8 +11,8 @@
 #include <stdlib.h>             // For exit()
 #include <unistd.h>             // For sleeping.
 #include <GL/glut.h>            // For The GLUT Library
-#include <GL/gl.h>              // For The OpenGL32 Library
 #include <GL/glu.h>             // For The GLu32 Library
+#include <cagoul/all.hpp>
 
 /* ASCII code for the escape key. */
 #define ESCAPE 27
@@ -24,19 +25,19 @@ int window;
 // We call this right after our OpenGL window is created.
 void InitGL(int Width, int Height)
 {
-  glClearColor(0.0f, 0.0f, 0.0f, 0.0f); // Clear The Background Color To Black
-  glClearDepth(1.0);            // Enables Clearing Of The Depth Buffer
-  glDepthFunc(GL_LESS);         // The Type Of Depth Test To Do
-  glEnable(GL_DEPTH_TEST);      // Enables Depth Testing
-  glShadeModel(GL_SMOOTH);      // Enables Smooth Color Shading
+  // This Will Clear The Background Color To Black
+  cagoul::ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+  cagoul::ClearDepth(1.0);      // Enables Clearing Of The Depth Buffer
+  cagoul::DepthFunc(cagoul::DepthFunc.LESS); // The Type Of Depth Test To Do
+  cagoul::DepthFunc.Enable();   // Enables Depth Testing
+  // Enables Smooth Color Shading
+  cagoul::ShadeModel(cagoul::ShadeModel.SMOOTH);
 
-  glMatrixMode(GL_PROJECTION);
+  cagoul::scoped::MatrixMode scope(cagoul::MatrixMode.PROJECTION);
   glLoadIdentity();             // Reset The Projection Matrix
 
   // Calculate The Aspect Ratio Of The Window
   gluPerspective(45.0f, (GLfloat) Width / (GLfloat) Height, 0.1f, 100.0f);
-
-  glMatrixMode(GL_MODELVIEW);
 }
 
 /* The function called when our window is resized (which shouldn't happen,
@@ -49,18 +50,19 @@ void ReSizeGLScene(int Width, int Height)
   // Reset The Current Viewport And Perspective Transformation
   glViewport(0, 0, Width, Height);
 
-  glMatrixMode(GL_PROJECTION);
+  cagoul::scoped::MatrixMode scope(cagoul::MatrixMode.PROJECTION);
   glLoadIdentity();
 
   gluPerspective(45.0f, (GLfloat) Width / (GLfloat) Height, 0.1f, 100.0f);
-  glMatrixMode(GL_MODELVIEW);
 }
 
 /* The main drawing function. */
 void DrawGLScene()
 {
   // Clear The Screen And The Depth Buffer
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  cagoul::Clear(
+    cagoul::Clear.COLOR_BUFFER_BIT | cagoul::Clear.DEPTH_BUFFER_BIT
+  );
   glLoadIdentity();             // Reset The View
 
   // Move Left 1.5 Units And Into The Screen 6.0
