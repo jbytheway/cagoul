@@ -152,8 +152,8 @@ void LoadGLTextures()
 // We call this right after our OpenGL window is created.
 void InitGL(int Width, int Height)
 {
-  LoadGLTextures();             // Load The Texture(s) 
-  glEnable(GL_TEXTURE_2D);      // Enable Texture Mapping
+  LoadGLTextures();             // Load The Texture(s)
+  cagoul::TexImage2D.Enable();  // Enable Texture Mapping
 
   // Clear The Background Color To Blue
   cagoul::ClearColor(0.0f, 0.0f, 1.0f, 0.0f);
