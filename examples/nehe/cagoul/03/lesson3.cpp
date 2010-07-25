@@ -69,25 +69,25 @@ void DrawGLScene()
   glTranslatef(-1.5f, 0.0f, -6.0f);
 
   // draw a triangle (in smooth coloring mode)
-  glBegin(GL_POLYGON);          // start drawing a polygon
-  glColor3f(1.0f, 0.0f, 0.0f);  // Set The Color To Red
-  glVertex3f(0.0f, 1.0f, 0.0f); // Top
-  glColor3f(0.0f, 1.0f, 0.0f);  // Set The Color To Green
-  glVertex3f(1.0f, -1.0f, 0.0f);        // Bottom Right
-  glColor3f(0.0f, 0.0f, 1.0f);  // Set The Color To Blue
-  glVertex3f(-1.0f, -1.0f, 0.0f);       // Bottom Left  
-  glEnd();    // we're done with the polygon (smooth color interpolation)
+  cagoul::Begin(cagoul::Begin::POLYGON)
+    .Colorf(1.0f, 0.0f, 0.0f)  // Set The Color To Red
+    .Vertexf(0.0f, 1.0f, 0.0f) // Top
+    .Colorf(0.0f, 1.0f, 0.0f)  // Set The Color To Green
+    .Vertexf(1.0f, -1.0f, 0.0f)        // Bottom Right
+    .Colorf(0.0f, 0.0f, 1.0f)  // Set The Color To Blue
+    .Vertexf(-1.0f, -1.0f, 0.0f)       // Bottom Left
+    ;    // we're done with the polygon (smooth color interpolation)
 
   glTranslatef(3.0f, 0.0f, 0.0f);       // Move Right 3 Units
 
   // draw a square (quadrilateral)
-  glColor3f(0.5f, 0.5f, 1.0f);  // set color to a blue shade.
-  glBegin(GL_QUADS);            // start drawing a polygon (4 sided)
-  glVertex3f(-1.0f, 1.0f, 0.0f);        // Top Left
-  glVertex3f(1.0f, 1.0f, 0.0f); // Top Right
-  glVertex3f(1.0f, -1.0f, 0.0f);        // Bottom Right
-  glVertex3f(-1.0f, -1.0f, 0.0f);       // Bottom Left
-  glEnd();                      // done with the polygon
+  cagoul::Begin(cagoul::Begin::QUADS)
+    .Colorf(0.5f, 0.5f, 1.0f)    // set color to a blue shade.
+    .Vertexf(-1.0f, 1.0f, 0.0f)   // Top Left
+    .Vertexf(1.0f, 1.0f, 0.0f)    // Top Right
+    .Vertexf(1.0f, -1.0f, 0.0f)   // Bottom Right
+    .Vertexf(-1.0f, -1.0f, 0.0f)  // Bottom Left
+    ;                           // done with the polygon
 
   // we need to swap the buffer to display our drawing.
   glutSwapBuffers();
