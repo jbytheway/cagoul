@@ -32,7 +32,6 @@ struct Image {
   uint32_t sizeY;
   char *data;
 };
-typedef struct Image Image;
 
 // quick and dirty bitmap loader...for 24 bit bitmaps with 1 plane only.
 // See http://www.dcs.ed.ac.uk/~mxr/gfx/2d/BMP.txt for more info.
@@ -118,16 +117,9 @@ int ImageLoad(char const* filename, Image* image)
 void LoadGLTextures()
 {
   // Load Texture
-  Image *image1;
+  Image image1;
 
-  // allocate space for texture
-  image1 = (Image *) malloc(sizeof(Image));
-  if (image1 == NULL) {
-    printf("Error allocating space for image");
-    exit(0);
-  }
-
-  if (!ImageLoad("../../data/NeHe.bmp", image1)) {
+  if (!ImageLoad("../../data/NeHe.bmp", &image1)) {
     exit(1);
   }
   // Create Texture
@@ -141,8 +133,10 @@ void LoadGLTextures()
   // 2d texture, level of detail 0 (normal), 3 components (red, green, blue),
   // x size from image, y size from image, border 0 (normal), rgb color data,
   // unsigned byte data, and finally the data itself.
-  glTexImage2D(GL_TEXTURE_2D, 0, 3, image1->sizeX, image1->sizeY, 0, GL_RGB,
-               GL_UNSIGNED_BYTE, image1->data);
+  glTexImage2D(GL_TEXTURE_2D, 0, 3, image1.sizeX, image1.sizeY, 0, GL_RGB,
+               GL_UNSIGNED_BYTE, image1.data);
+
+  free(image1.data);
 };
 
 /* A general OpenGL initialization function.  Sets all of the initial
