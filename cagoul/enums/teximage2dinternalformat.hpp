@@ -63,6 +63,8 @@ namespace cagoul { namespace enums {
   (SRGB_ALPHA) \
   (SRGB8_ALPHA8)
 
+/** \brief Scoped enumeration of potential arguments to the internalFormat
+ * argument of glTexImage2D / cagoul::TexImage2D. */
 CAGOUL_DETAIL_DEFINE_SCOPED_ENUM(
   TexImage2DInternalFormat, CAGOUL_ENUMS_TEXIMAGE2DINTERNALFORMAT_VALUES
 )

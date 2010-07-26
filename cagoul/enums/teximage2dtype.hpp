@@ -27,6 +27,8 @@ namespace cagoul { namespace enums {
   (UNSIGNED_INT_10_10_10_2) \
   (UNSIGNED_INT_2_10_10_10_REV)
 
+/** \brief Scoped enumeration of potential arguments to the type argument of
+ * glTexImage2D / cagoul::TexImage2D. */
 CAGOUL_DETAIL_DEFINE_SCOPED_ENUM(
   TexImage2DType, CAGOUL_ENUMS_TEXIMAGE2DTYPE_VALUES
 )

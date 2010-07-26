@@ -18,6 +18,8 @@ namespace cagoul { namespace enums {
   (LUMINANCE) \
   (LUMINANCE_ALPHA)
 
+/** \brief Scoped enumeration of potential arguments to the format argument of
+ * glTexImage2D / cagoul::TexImage2D. */
 CAGOUL_DETAIL_DEFINE_SCOPED_ENUM(
   TexImage2DFormat, CAGOUL_ENUMS_TEXIMAGE2DFORMAT_VALUES
 )
