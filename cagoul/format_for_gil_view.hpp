@@ -18,6 +18,12 @@ namespace detail {
 
 }
 
+/** \brief Get the GL format name for a Boost.GIL view.
+ *
+ * \return The value of enums::TexImage2DFormat which should be passed to
+ * glTexImage2d or cagoul::TexImage2D to convert the data in this View into a
+ * GL texture.
+ */
 template<typename View>
 inline enums::TexImage2DFormat format_for_gil_view(View const&) {
   return detail::format_for_gil_layout(typename View::value_type::layout_t());

@@ -6,8 +6,19 @@
 
 namespace cagoul {
 
+/** \brief RAII wrapper round GLuint representing a texture.
+ *
+ * A cagoul::texture stores a GLuint which is made a texture using
+ * glGenTextures at construction time, and deleted using glDeleteTextures at
+ * destruction time.
+ */
 class texture : public GLuint_wrapper {
   public:
+    /** \brief Constructs a texture which will be bound to the given \c target.
+     *
+     * The texture will be created with glGenTextures.  The \c target argument
+     * will be stored for later use in calls to Bind().
+     */
     texture(enums::BindTextureTarget target) :
       target_(target)
     {
@@ -17,6 +28,7 @@ class texture : public GLuint_wrapper {
       glDeleteTextures(1, &value_);
     }
 
+    /** \brief Bind this texture using glBindTexture. */
     void Bind() const {
       glBindTexture(target_, value_);
     }

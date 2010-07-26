@@ -11,6 +11,8 @@ namespace cagoul { namespace enums {
   (TEXTURE_3D) \
   (TEXTURE_CUBE_MAP)
 
+/** \brief Scoped enumeration of potential arguments to the target argument of
+ * glBindTexture. */
 CAGOUL_DETAIL_DEFINE_SCOPED_ENUM(
   BindTextureTarget, CAGOUL_ENUMS_BINDTEXTURETARGET_VALUES
 )

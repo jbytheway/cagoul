@@ -16,6 +16,8 @@ namespace cagoul { namespace enums {
   (TEXTURE_CUBE_MAP_NEGATIVE_Z) \
   (PROXY_TEXTURE_CUBE_MAP)
 
+/** \brief Scoped enumeration of potential arguments to the target argument of
+ * glTexImage2D / cagoul::TexImage2D. */
 CAGOUL_DETAIL_DEFINE_SCOPED_ENUM(
   TexImage2DTarget, CAGOUL_ENUMS_TEXIMAGE2DTARGET_VALUES
 )
