@@ -32,9 +32,6 @@
 /* The number of our GLUT window */
 int window;
 
-/* floats for x rotation, y rotation, z rotation */
-float xrot, yrot, zrot;
-
 cagoul::texture texture(cagoul::enums::BindTextureTarget::TEXTURE_2D);
 
 // Load image and convert to texture
@@ -111,9 +108,15 @@ void DrawGLScene()
 
   glTranslatef(0.0f, 0.0f, -5.0f);      // move 5 units into the screen.
 
+  /* floats for x rotation, y rotation, z rotation */
+  static float xrot = 0, yrot = 0, zrot = 0;
   glRotatef(xrot, 1.0f, 0.0f, 0.0f);    // Rotate On The X Axis
   glRotatef(yrot, 0.0f, 1.0f, 0.0f);    // Rotate On The Y Axis
   glRotatef(zrot, 0.0f, 0.0f, 1.0f);    // Rotate On The Z Axis
+
+  xrot += 0.003f;                // X Axis Rotation
+  yrot += 0.002f;                // Y Axis Rotation
+  zrot += 0.004f;                // Z Axis Rotation
 
   texture.Bind();     // choose the texture to use.
 
@@ -180,10 +183,6 @@ void DrawGLScene()
     .TexCoordf(0.0f, 1.0f)
     .Vertexf(-1.0f, 1.0f, -1.0f)       // Top Left Of The Texture and Quad
     ;
-
-  xrot += 0.003f;                // X Axis Rotation
-  yrot += 0.002f;                // Y Axis Rotation
-  zrot += 0.004f;                // Z Axis Rotation
 
   // since this is double buffered, swap the buffers to display what just got
   // drawn.
