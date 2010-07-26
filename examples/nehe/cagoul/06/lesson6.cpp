@@ -124,63 +124,63 @@ void DrawGLScene()
 
     // Front Face (note that the texture's corners have to match the quad's
     // corners)
-    .TexCoordf(0.0f, 0.0f)
-    .Vertexf(-1.0f, -1.0f, 1.0f)       // Bottom Left Of The Texture and Quad
-    .TexCoordf(1.0f, 0.0f)
-    .Vertexf(1.0f, -1.0f, 1.0f)        // Bottom Right Of The Texture and Quad
-    .TexCoordf(1.0f, 1.0f)
-    .Vertexf(1.0f, 1.0f, 1.0f)         // Top Right Of The Texture and Quad
     .TexCoordf(0.0f, 1.0f)
+    .Vertexf(-1.0f, -1.0f, 1.0f)       // Bottom Left Of The Texture and Quad
+    .TexCoordf(1.0f, 1.0f)
+    .Vertexf(1.0f, -1.0f, 1.0f)        // Bottom Right Of The Texture and Quad
+    .TexCoordf(1.0f, 0.0f)
+    .Vertexf(1.0f, 1.0f, 1.0f)         // Top Right Of The Texture and Quad
+    .TexCoordf(0.0f, 0.0f)
     .Vertexf(-1.0f, 1.0f, 1.0f)        // Top Left Of The Texture and Quad
 
     // Back Face
-    .TexCoordf(1.0f, 0.0f)
-    .Vertexf(-1.0f, -1.0f, -1.0f)      // Bottom Right Of The Texture and Quad
     .TexCoordf(1.0f, 1.0f)
+    .Vertexf(-1.0f, -1.0f, -1.0f)      // Bottom Right Of The Texture and Quad
+    .TexCoordf(1.0f, 0.0f)
     .Vertexf(-1.0f, 1.0f, -1.0f)       // Top Right Of The Texture and Quad
-    .TexCoordf(0.0f, 1.0f)
-    .Vertexf(1.0f, 1.0f, -1.0f)        // Top Left Of The Texture and Quad
     .TexCoordf(0.0f, 0.0f)
+    .Vertexf(1.0f, 1.0f, -1.0f)        // Top Left Of The Texture and Quad
+    .TexCoordf(0.0f, 1.0f)
     .Vertexf(1.0f, -1.0f, -1.0f)       // Bottom Left Of The Texture and Quad
 
     // Top Face
-    .TexCoordf(0.0f, 1.0f)
-    .Vertexf(-1.0f, 1.0f, -1.0f)       // Top Left Of The Texture and Quad
     .TexCoordf(0.0f, 0.0f)
+    .Vertexf(-1.0f, 1.0f, -1.0f)       // Top Left Of The Texture and Quad
+    .TexCoordf(0.0f, 1.0f)
     .Vertexf(-1.0f, 1.0f, 1.0f)        // Bottom Left Of The Texture and Quad
-    .TexCoordf(1.0f, 0.0f)
-    .Vertexf(1.0f, 1.0f, 1.0f)         // Bottom Right Of The Texture and Quad
     .TexCoordf(1.0f, 1.0f)
+    .Vertexf(1.0f, 1.0f, 1.0f)         // Bottom Right Of The Texture and Quad
+    .TexCoordf(1.0f, 0.0f)
     .Vertexf(1.0f, 1.0f, -1.0f)        // Top Right Of The Texture and Quad
 
     // Bottom Face
-    .TexCoordf(1.0f, 1.0f)
-    .Vertexf(-1.0f, -1.0f, -1.0f)      // Top Right Of The Texture and Quad
-    .TexCoordf(0.0f, 1.0f)
-    .Vertexf(1.0f, -1.0f, -1.0f)       // Top Left Of The Texture and Quad
-    .TexCoordf(0.0f, 0.0f)
-    .Vertexf(1.0f, -1.0f, 1.0f)        // Bottom Left Of The Texture and Quad
     .TexCoordf(1.0f, 0.0f)
+    .Vertexf(-1.0f, -1.0f, -1.0f)      // Top Right Of The Texture and Quad
+    .TexCoordf(0.0f, 0.0f)
+    .Vertexf(1.0f, -1.0f, -1.0f)       // Top Left Of The Texture and Quad
+    .TexCoordf(0.0f, 1.0f)
+    .Vertexf(1.0f, -1.0f, 1.0f)        // Bottom Left Of The Texture and Quad
+    .TexCoordf(1.0f, 1.0f)
     .Vertexf(-1.0f, -1.0f, 1.0f)       // Bottom Right Of The Texture and Quad
 
     // Right face
-    .TexCoordf(1.0f, 0.0f)
-    .Vertexf(1.0f, -1.0f, -1.0f)       // Bottom Right Of The Texture and Quad
     .TexCoordf(1.0f, 1.0f)
+    .Vertexf(1.0f, -1.0f, -1.0f)       // Bottom Right Of The Texture and Quad
+    .TexCoordf(1.0f, 0.0f)
     .Vertexf(1.0f, 1.0f, -1.0f)        // Top Right Of The Texture and Quad
-    .TexCoordf(0.0f, 1.0f)
-    .Vertexf(1.0f, 1.0f, 1.0f)         // Top Left Of The Texture and Quad
     .TexCoordf(0.0f, 0.0f)
+    .Vertexf(1.0f, 1.0f, 1.0f)         // Top Left Of The Texture and Quad
+    .TexCoordf(0.0f, 1.0f)
     .Vertexf(1.0f, -1.0f, 1.0f)        // Bottom Left Of The Texture and Quad
 
     // Left Face
-    .TexCoordf(0.0f, 0.0f)
-    .Vertexf(-1.0f, -1.0f, -1.0f)      // Bottom Left Of The Texture and Quad
-    .TexCoordf(1.0f, 0.0f)
-    .Vertexf(-1.0f, -1.0f, 1.0f)       // Bottom Right Of The Texture and Quad
-    .TexCoordf(1.0f, 1.0f)
-    .Vertexf(-1.0f, 1.0f, 1.0f)        // Top Right Of The Texture and Quad
     .TexCoordf(0.0f, 1.0f)
+    .Vertexf(-1.0f, -1.0f, -1.0f)      // Bottom Left Of The Texture and Quad
+    .TexCoordf(1.0f, 1.0f)
+    .Vertexf(-1.0f, -1.0f, 1.0f)       // Bottom Right Of The Texture and Quad
+    .TexCoordf(1.0f, 0.0f)
+    .Vertexf(-1.0f, 1.0f, 1.0f)        // Top Right Of The Texture and Quad
+    .TexCoordf(0.0f, 0.0f)
     .Vertexf(-1.0f, 1.0f, -1.0f)       // Top Left Of The Texture and Quad
     ;
 
