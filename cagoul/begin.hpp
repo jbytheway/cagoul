@@ -1,4 +1,5 @@
-#if !defined(BOOST_PP_IS_ITERATING) || !BOOST_PP_IS_ITERATING
+#if (!defined(BOOST_PP_IS_ITERATING) || !BOOST_PP_IS_ITERATING) && \
+  !defined(CAGOUL_BEGIN_MEMBER_NAME)
 
 #ifndef CAGOUL__BEGIN_HPP
 #define CAGOUL__BEGIN_HPP
@@ -94,27 +95,18 @@ class Begin : public enums::Begin::values {
 
 #define CAGOUL_BEGIN_MEMBER_NAME Vertex
 #define CAGOUL_BEGIN_MEMBER_TYPE_SEQ (s)(i)(f)(d)
-#define BOOST_PP_ITERATION_PARAMS_1 \
-  (3, (2, 4, "cagoul/begin.hpp"))
-#include BOOST_PP_ITERATE()
-#undef CAGOUL_BEGIN_MEMBER_NAME
-#undef CAGOUL_BEGIN_MEMBER_TYPE_SEQ
+#define CAGOUL_BEGIN_MEMBER_ARITY_SEQ (2)(3)(4)
+#include <cagoul/begin.hpp>
 
 #define CAGOUL_BEGIN_MEMBER_NAME Color
 #define CAGOUL_BEGIN_MEMBER_TYPE_SEQ (b)(s)(i)(f)(d)(ub)(us)(ui)
-#define BOOST_PP_ITERATION_PARAMS_1 \
-  (3, (3, 4, "cagoul/begin.hpp"))
-#include BOOST_PP_ITERATE()
-#undef CAGOUL_BEGIN_MEMBER_NAME
-#undef CAGOUL_BEGIN_MEMBER_TYPE_SEQ
+#define CAGOUL_BEGIN_MEMBER_ARITY_SEQ (3)(4)
+#include <cagoul/begin.hpp>
 
 #define CAGOUL_BEGIN_MEMBER_NAME TexCoord
 #define CAGOUL_BEGIN_MEMBER_TYPE_SEQ (s)(i)(f)(d)
-#define BOOST_PP_ITERATION_PARAMS_1 \
-  (3, (1, 4, "cagoul/begin.hpp"))
-#include BOOST_PP_ITERATE()
-#undef CAGOUL_BEGIN_MEMBER_NAME
-#undef CAGOUL_BEGIN_MEMBER_TYPE_SEQ
+#define CAGOUL_BEGIN_MEMBER_ARITY_SEQ (1)(2)(3)(4)
+#include <cagoul/begin.hpp>
 
 #endif // DOXYGEN
 
@@ -133,8 +125,22 @@ class Begin : public enums::Begin::values {
 
 #endif // CAGOUL__BEGIN_HPP
 
+#elif (!defined(BOOST_PP_IS_ITERATING) || !BOOST_PP_IS_ITERATING) && \
+  defined(CAGOUL_BEGIN_MEMBER_NAME)
+
+// In this branch we need to generate all the overloads for a particular name;
+// first we iterate over arities
+#define BOOST_PP_ITERATION_PARAMS_1 \
+  (3, (0, BOOST_PP_SUB(BOOST_PP_SEQ_SIZE(CAGOUL_BEGIN_MEMBER_ARITY_SEQ), 1), \
+       "cagoul/begin.hpp"))
+#include BOOST_PP_ITERATE()
+#undef CAGOUL_BEGIN_MEMBER_NAME
+#undef CAGOUL_BEGIN_MEMBER_TYPE_SEQ
+#undef CAGOUL_BEGIN_MEMBER_ARITY_SEQ
+
 #elif BOOST_PP_ITERATION_DEPTH() == 1
 
+// Next we iterate over types
 #define BOOST_PP_ITERATION_PARAMS_2 \
   (3, (0, BOOST_PP_SUB(BOOST_PP_SEQ_SIZE(CAGOUL_BEGIN_MEMBER_TYPE_SEQ), 1), \
        "cagoul/begin.hpp"))
@@ -143,7 +149,9 @@ class Begin : public enums::Begin::values {
 
 #elif BOOST_PP_ITERATION_DEPTH() == 2
 
-#define CAGOUL_BEGIN_ARITY BOOST_PP_ITERATION_1
+// Finally we actually define the function
+#define CAGOUL_BEGIN_ARITY \
+  BOOST_PP_SEQ_ELEM(BOOST_PP_ITERATION_1, CAGOUL_BEGIN_MEMBER_ARITY_SEQ)
 #define CAGOUL_BEGIN_TYPE \
   BOOST_PP_SEQ_ELEM(BOOST_PP_ITERATION_2, CAGOUL_BEGIN_MEMBER_TYPE_SEQ)
 
