@@ -24,8 +24,7 @@ int window;
 /* floats for x rotation, y rotation, z rotation */
 float xrot, yrot, zrot;
 
-/* storage for one texture  */
-GLuint texture[1];
+cagoul::texture texture(cagoul::enums::BindTextureTarget::TEXTURE_2D);
 
 /* Image type - contains height, width, and data */
 struct Image {
@@ -132,8 +131,7 @@ void LoadGLTextures()
     exit(1);
   }
   // Create Texture
-  glGenTextures(1, &texture[0]);
-  glBindTexture(GL_TEXTURE_2D, texture[0]);     // 2d texture (x and y size)
+  texture.Bind();     // 2d texture (x and y size)
 
   // scale linearly when image bigger than texture
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -201,7 +199,7 @@ void DrawGLScene()
   glRotatef(yrot, 0.0f, 1.0f, 0.0f);    // Rotate On The Y Axis
   glRotatef(zrot, 0.0f, 0.0f, 1.0f);    // Rotate On The Z Axis
 
-  glBindTexture(GL_TEXTURE_2D, texture[0]);     // choose the texture to use.
+  texture.Bind();     // choose the texture to use.
 
   glBegin(GL_QUADS);            // begin drawing a cube
 
