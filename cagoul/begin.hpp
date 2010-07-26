@@ -108,6 +108,14 @@ class Begin : public enums::Begin::values {
 #undef CAGOUL_BEGIN_MEMBER_NAME
 #undef CAGOUL_BEGIN_MEMBER_TYPE_SEQ
 
+#define CAGOUL_BEGIN_MEMBER_NAME TexCoord
+#define CAGOUL_BEGIN_MEMBER_TYPE_SEQ (s)(i)(f)(d)
+#define BOOST_PP_ITERATION_PARAMS_1 \
+  (3, (1, 4, "cagoul/begin.hpp"))
+#include BOOST_PP_ITERATE()
+#undef CAGOUL_BEGIN_MEMBER_NAME
+#undef CAGOUL_BEGIN_MEMBER_TYPE_SEQ
+
 #endif // DOXYGEN
 
     /** \brief Calls the given NullaryFunction \c f. */
