@@ -45,7 +45,9 @@ class setter CAGOUL_DETAIL_BRACES_IF_DOXYGEN;
 
 template<
   typename T,
-  typename detail::homogenous_function<T, BOOST_PP_ITERATION()>::type* Setter
+  typename detail::homogenous_function<
+    typename detail::decay_scoped_enum<T>::type, BOOST_PP_ITERATION()
+  >::type* Setter
 >
 class setter<T, BOOST_PP_ITERATION(), Setter> {
   public:
