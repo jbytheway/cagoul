@@ -44,7 +44,7 @@ void LoadGLTextures()
   assert(image.width() == 256);
   assert(image.height() == 256);
 
-  texture.Bind();
+  cagoul::scoped::BindTexture s(texture);
 
   // scale linearly when image bigger than texture
   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -119,7 +119,7 @@ void DrawGLScene()
   yrot += 0.002f;                // Y Axis Rotation
   zrot += 0.004f;                // Z Axis Rotation
 
-  texture.Bind();     // choose the texture to use.
+  cagoul::scoped::BindTexture s(texture);     // choose the texture to use.
 
   cagoul::Begin(cagoul::Begin::QUADS)            // begin drawing a cube
 
