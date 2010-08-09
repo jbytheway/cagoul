@@ -33,6 +33,10 @@ inline void Get(GLenum const pname, GLint* const params) {
   glGetIntegerv(pname, params);
 }
 
+inline void Get(GLenum const pname, GLuint* const params) {
+  glGetIntegerv(pname, reinterpret_cast<GLint*>(params));
+}
+
 /** \brief Fetch enumeration value using glGet.
  *
  * This overload is used when you call Get with a pointer to a scoped enum (as
