@@ -18,6 +18,7 @@
 #include <cagoul/all.hpp>
 
 // workaround Boost.GIL bug https://svn.boost.org/trac/boost/ticket/3908
+// (should be fixed in 1.44 or 1.45)
 #ifndef png_infopp_NULL
 #define png_infopp_NULL NULL
 #endif
