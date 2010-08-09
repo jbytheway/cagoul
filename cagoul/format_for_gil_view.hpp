@@ -16,6 +16,12 @@ namespace detail {
     return enums::TexImage2DFormat::RGB;
   }
 
+  inline enums::TexImage2DFormat format_for_gil_layout(
+    boost::gil::gray_layout_t const&
+  ) {
+    return enums::TexImage2DFormat::LUMINANCE;
+  }
+
 }
 
 /** \brief Get the GL format name for a Boost.GIL view.

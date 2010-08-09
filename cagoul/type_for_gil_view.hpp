@@ -12,7 +12,13 @@ namespace detail {
   /** \bug Implementation incomplete; probably shouldn't overload specific
    * pixel types, but rather work from the GIL ColorBase concept. */
   inline enums::TexImage2DType type_for_gil_color_base(
-    boost::gil::rgb8_pixel_t const&
+    boost::gil::rgb8_pixel_t const*
+  ) {
+    return enums::TexImage2DType::UNSIGNED_BYTE;
+  }
+
+  inline enums::TexImage2DType type_for_gil_color_base(
+    boost::gil::gray8_pixel_t const*
   ) {
     return enums::TexImage2DType::UNSIGNED_BYTE;
   }
@@ -27,7 +33,8 @@ namespace detail {
  */
 template<typename View>
 inline enums::TexImage2DType type_for_gil_view(View const&) {
-  return detail::type_for_gil_color_base(typename View::value_type());
+  typename View::value_type* tag = NULL;
+  return detail::type_for_gil_color_base(tag);
 }
 
 }
