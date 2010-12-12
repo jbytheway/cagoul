@@ -5,9 +5,14 @@
 
 namespace cagoul { namespace scoped {
 
+/** \brief Class which temporarily binds a texture, and then resets to the
+ * previous binding.
+ */
 class BindTexture {
   public:
-    BindTexture(cagoul::texture const& tex);
+    /** \brief Bind the given texture while this instance is in scope.
+     */
+    BindTexture(cagoul::texture const&);
     ~BindTexture();
   private:
     enums::BindTextureTarget target_;

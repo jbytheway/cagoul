@@ -28,6 +28,7 @@ class texture : public GLuint_wrapper {
       glDeleteTextures(1, &value_);
     }
 
+    /** \brief The target to which this texture can be bound. */
     enums::BindTextureTarget target() const { return target_; }
 
     /** \brief Bind this texture using glBindTexture. */
