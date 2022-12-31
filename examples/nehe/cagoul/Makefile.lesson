@@ -2,5 +2,5 @@
 
 BIN := $(basename $(wildcard *.cpp))
 LIB_DEP_NAMES := cagoul
-LIBS := -lglut -lGLU -lpng
+LIBS := -lglut -lGLU -lGL -lpng
 
