@@ -10,7 +10,7 @@ STRAY_INCLUDE_TESTS := \
 	$(filter-out $(INCLUDE_TESTS),$(wildcard *.include.cpp))
 
 BIN := cagoul-test
-LIBS := -lboost_unit_test_framework-mt
+LIBS := -lboost_unit_test_framework
 GEN_SOURCES := $(INCLUDE_TESTS)
 EXCLUDE_FILES := $(STRAY_INCLUDE_TESTS)
 
