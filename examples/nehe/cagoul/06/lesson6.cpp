@@ -25,7 +25,7 @@
 #ifndef int_p_NULL
 #define int_p_NULL NULL
 #endif
-#include <boost/gil/extension/io/png_io.hpp>
+#include <boost/gil/extension/io/png.hpp>
 
 /* ascii code for the escape key */
 #define ESCAPE 27
@@ -40,7 +40,7 @@ void LoadGLTextures()
 {
   char const* filename = "../../data/NeHe.png";
   boost::gil::rgb8_image_t image;
-  boost::gil::png_read_image(filename, image);
+  boost::gil::read_image(filename, image, boost::gil::png_tag());
   assert(image.width() == 256);
   assert(image.height() == 256);
 
