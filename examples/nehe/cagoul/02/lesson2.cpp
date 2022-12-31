@@ -13,7 +13,6 @@
 #include <unistd.h>             // Header File For sleeping.
 #include <GL/glut.h>            // Header File For The GLUT Library
 #include <GL/glu.h>             // Header File For The GLu32 Library
-#include <boost/bind.hpp>
 #include <boost/fusion/include/make_vector.hpp>
 #include <boost/fusion/include/equal_to.hpp>
 #include <cagoul/all.hpp>
@@ -88,9 +87,9 @@ void DrawGLScene()
 
   // draw a triangle
   cagoul::Begin(cagoul::Begin::POLYGON)
-    .call(boost::bind(glVertex3f, 0.0f, 1.0f, 0.0f))    // Top
-    .call(boost::bind(glVertex3f, 1.0f, -1.0f, 0.0f))   // Bottom Right
-    .call(boost::bind(glVertex3f, -1.0f, -1.0f, 0.0f))  // Bottom Left
+    .call(std::bind(glVertex3f, 0.0f, 1.0f, 0.0f))    // Top
+    .call(std::bind(glVertex3f, 1.0f, -1.0f, 0.0f))   // Bottom Right
+    .call(std::bind(glVertex3f, -1.0f, -1.0f, 0.0f))  // Bottom Left
     ;
 
   glTranslatef(3.0f, 0.0f, 0.0f);       // Move Right 3 Units
